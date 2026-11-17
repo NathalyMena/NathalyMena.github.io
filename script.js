@@ -4,7 +4,7 @@
 
 /* ---------- 1. CONTENIDO EDITABLE ---------- */
 // Enlace a tu perfil de Behance (se aplica a todos los botones "Behance").
-const BEHANCE_PROFILE = 'https://www.behance.net/';
+const BEHANCE_PROFILE = 'https://www.behance.net/nathalymena';
 
 const CATEGORIES = {
   all:      'Todos',
@@ -16,18 +16,23 @@ const CATEGORIES = {
 // Un objeto por proyecto de Behance. `id` es el número del embed.
 // EDITA: title, cat, summary, tags y (opcional) cover: './assets/portada.jpg'.
 const PROJECTS = [
-  { id: '173104053', cat: 'ux',       title: 'Caso de estudio 01', tags: ['UX/UI', 'Producto digital'] },
-  { id: '143928289', cat: 'ux',       title: 'Caso de estudio 02', tags: ['UX/UI', 'Prototipado'] },
-  { id: '121317481', cat: 'ds',       title: 'Caso de estudio 03', tags: ['Design System', 'UI'] },
-  { id: '127262537', cat: 'research', title: 'Caso de estudio 04', tags: ['UX Research', 'Service Design'] },
-  { id: '132285327', cat: 'ux',       title: 'Caso de estudio 05', tags: ['UX/UI', 'Arquitectura de información'] },
-  { id: '118103147', cat: 'ds',       title: 'Caso de estudio 06', tags: ['Sistema gráfico', 'UI'] },
-  { id: '114796861', cat: 'research', title: 'Caso de estudio 07', tags: ['Investigación', 'Accesibilidad'] },
+  { id: '173104053', cat: 'ux',       title: 'Realidad Virtual EPI',                       tags: ['Realidad virtual', 'UX/UI'] },
+  { id: '143928289', cat: 'research', title: 'Compra en línea: investigación de usuarios', tags: ['UX Research', 'E-commerce'] },
+  { id: '121317481', cat: 'ux',       title: 'Akarui Station UX/UI',                       tags: ['UX/UI', 'Prototipado'] },
+  { id: '127262537', cat: 'ux',       title: 'Videojuego: Rampage UI',                     tags: ['UI', 'Videojuego'] },
+  { id: '132285327', cat: 'ds',       title: 'Spectrum',                                   tags: ['Sistema visual', 'UI'] },
+  { id: '118103147', cat: 'ux',       title: 'Mercaline UX/UI',                            tags: ['UX/UI', 'Producto digital'] },
+  { id: '114796861', cat: 'research', title: 'Mercaline Investigación',                    tags: ['Investigación', 'UX Research'] },
 ].map(p => ({
   summary: 'Presentación completa publicada en Behance: contexto, proceso, decisiones de diseño y resultado.',
   cover: '',
   ...p,
 }));
+
+// Certificaciones de Crehana que se muestran al abrir la tarjeta. EDITA esta lista:
+// { name: 'Nombre del curso', year: '2024', url: 'https://...' }  (year y url son opcionales)
+const CREHANA_CERTS = [];
+
 
 const embedUrl   = id => `https://www.behance.net/embed/project/${id}?ilo0=1`;
 const galleryUrl = id => `https://www.behance.net/gallery/${id}/_`;
@@ -36,7 +41,10 @@ const galleryUrl = id => `https://www.behance.net/gallery/${id}/_`;
 const $  = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+// Modo estático: lo activa el interruptor de la navegación (o la preferencia del sistema).
+let reduced = store.get('motion') ? store.get('motion') === 'off' : prefersReduced;
 const root = document.documentElement;
 
 $$('[data-behance]').forEach(a => (a.href = BEHANCE_PROFILE));
@@ -48,22 +56,11 @@ const filters = $('#filters');
 let currentCat = 'all';
 let visible = PROJECTS;
 
-// Paletas de la portada generativa (se usa mientras no haya `cover`).
-const COVERS = [
-  { bg: '#0026E6', fg: '#fff',    cap: '#FFCC00', arc: '#00F5D4' },
-  { bg: '#FFCC00', fg: '#0B132B', cap: '#0026E6', arc: '#00F5D4' },
-  { bg: '#0B132B', fg: '#fff',    cap: '#0026E6', arc: '#FFCC00' },
-  { bg: '#DFF8F4', fg: '#0B132B', cap: '#FFCC00', arc: '#0026E6' },
-];
-
-function coverMarkup(p, n) {
+// Portada = vista previa del proyecto. Si defines `cover`, se usa esa imagen;
+// si no, se muestra la vista previa oficial de Behance (embed, carga diferida).
+function coverMarkup(p) {
   if (p.cover) return `<img src="${p.cover}" alt="" loading="lazy">`;
-  return `<span class="gen">
-      <span class="gen__num">${String(n + 1).padStart(2, '0')}</span>
-      <span class="gen__cap"></span>
-      <svg viewBox="0 0 400 160" aria-hidden="true"><path d="M12 10 C 80 190, 320 190, 388 10"/></svg>
-      <i class="reg reg--tr"></i><i class="reg reg--bl"></i><i class="reg reg--br"></i>
-    </span>`;
+  return `<iframe src="${embedUrl(p.id)}" title="" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
 }
 
 function renderFilters() {
@@ -81,13 +78,13 @@ function renderGrid() {
     return;
   }
   grid.innerHTML = visible.map((p, i) => {
-    const n = PROJECTS.indexOf(p);
-    const c = COVERS[n % COVERS.length];
-    return `<article class="pcard" style="--i:${i};--c-bg:${c.bg};--c-fg:${c.fg};--c-cap:${c.cap};--c-arc:${c.arc}">
-      <button class="pcard__cover" data-open="${i}" aria-label="Ver presentación interactiva de ${p.title}">
-        ${coverMarkup(p, n)}
-        <span class="pcard__play" aria-hidden="true">▶ Ver presentación</span>
-      </button>
+    return `<article class="pcard" style="--i:${i}">
+      <div class="pcard__cover">
+        ${coverMarkup(p)}
+        <button class="pcard__hit" data-open="${i}" aria-label="Ver presentación interactiva de ${p.title}">
+          <span class="pcard__play" aria-hidden="true">▶ Ver presentación</span>
+        </button>
+      </div>
       <div class="pcard__body">
         <span class="pcard__cat">${CATEGORIES[p.cat]}</span>
         <h3>${p.title}</h3>
@@ -206,7 +203,7 @@ function onScroll() {
   bar.style.transform = `scaleX(${max > 0 ? clamp(y / max) : 0})`;
 
   // Hero: 0 → 1 mientras sale. Controla color de fondo, escala y radio del panel (ver CSS).
-  root.style.setProperty('--hero-p', reduced ? (y > heroH * 0.5 ? 1 : 0) : clamp(y / (heroH * 0.85)).toFixed(4));
+  root.style.setProperty('--hero-p', reduced ? 0 : clamp(y / (heroH * 0.85)).toFixed(4));
   document.body.classList.toggle('past-hero', y > heroH - 90);
 
   if (!reduced) {
@@ -240,9 +237,10 @@ onScroll();
 
 /* ---------- 7. PARALLAX DE LA FOTO CON EL MOUSE ---------- */
 const frame = $('#frame');
-if (!reduced && matchMedia('(pointer: fine)').matches) {
+if (matchMedia('(pointer: fine)').matches) {
   const panel = $('.hero__panel');
   panel.addEventListener('pointermove', e => {
+    if (reduced) return;
     const r = panel.getBoundingClientRect();
     frame.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
     frame.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
@@ -263,3 +261,37 @@ const setMenu = open => {
 };
 toggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
 $$('a', nav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+/* ---------- 9. MODO ESTÁTICO (sin animaciones) ---------- */
+const motionToggle = $('#motionToggle');
+function applyMotion() {
+  root.classList.toggle('static', reduced);
+  motionToggle.setAttribute('aria-checked', !reduced);
+  if (reduced) {
+    tape.style.transform = '';
+    regmarks.style.setProperty('--rot', '0deg');
+    contactPanel.style.setProperty('--rot', '0deg');
+    regmarks.classList.remove('is-lit');
+    frame.style.setProperty('--mx', 0);
+    frame.style.setProperty('--my', 0);
+  }
+  onScroll();
+}
+motionToggle.addEventListener('click', () => {
+  reduced = !reduced;
+  store.set('motion', reduced ? 'off' : 'on');
+  applyMotion();
+});
+applyMotion();
+
+/* ---------- 10. CERTIFICACIONES CREHANA ---------- */
+const certModal = $('#certModal');
+$('#certList').innerHTML = CREHANA_CERTS.length
+  ? CREHANA_CERTS.map(c => {
+      const name = c.url ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name} ↗</a>` : c.name;
+      return `<li><span>${name}</span>${c.year ? `<small>${c.year}</small>` : ''}</li>`;
+    }).join('')
+  : '<li class="certs__empty">Lista de certificaciones en actualización.</li>';
+$('#certOpen').addEventListener('click', () => certModal.showModal());
+$('#certClose').addEventListener('click', () => certModal.close());
+certModal.addEventListener('click', e => { if (e.target === certModal) certModal.close(); });

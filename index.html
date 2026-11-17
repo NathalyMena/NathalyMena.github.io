@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nathaly Mena — Diseñadora UX/UI</title>
-<meta name="description" content="Portafolio de Nathaly Mena, Diseñadora UX/UI y Product Designer. Productos B2B, Sistemas de Diseño y Accesibilidad (WCAG).">
+<meta name="description" content="Portafolio de Nathaly Mena, Diseñadora UX/UI y Product Designer. Productos B2B y B2C, Sistemas de Diseño y Accesibilidad (WCAG).">
 <meta name="theme-color" content="#0026E6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,9 @@
     <a href="#proyectos">Proyectos</a>
     <a href="#sobre-mi">Sobre mí</a>
     <a href="#experiencia">Experiencia</a>
+    <button class="motion" id="motionToggle" type="button" role="switch" aria-checked="true" title="Activa o desactiva las animaciones de la página">
+      <span class="motion__track" aria-hidden="true"><span></span></span><span class="motion__label">Animaciones</span>
+    </button>
     <a class="btn btn--yellow btn--sm" href="#contacto">Hablemos</a>
   </div>
 </nav>
@@ -48,14 +51,15 @@
           <span class="arc-word">escalables.<svg viewBox="0 0 300 26" preserveAspectRatio="none" aria-hidden="true"><path d="M4 4 C 90 30, 210 30, 296 4"/></svg></span>
         </h1>
         <p class="hero__sub" data-reveal style="--d:.16s">
-          <strong>+3 años</strong> diseñando productos <strong>B2B</strong>, Sistemas de Diseño y experiencias accesibles
+          <strong>+3 años</strong> diseñando productos <strong>B2B y B2C</strong>, Sistemas de Diseño y experiencias accesibles
           <strong>(WCAG)</strong>. Actualmente curso la Maestría en Creación de Experiencias de Usuario en la Universidad Icesi.
         </p>
         <div class="hero__cta" data-reveal style="--d:.24s">
           <a class="btn btn--hero" href="#proyectos">Ver proyectos <span class="btn__ico" aria-hidden="true">↓</span></a>
           <span class="split">
-            <a data-behance href="https://www.behance.net/" target="_blank" rel="noopener">Behance <span aria-hidden="true">↗</span></a>
-            <a href="./assets/CV-Nathaly-Mena.pdf" download>CV <span aria-hidden="true">↓</span></a>
+            <a data-behance href="https://www.behance.net/nathalymena" target="_blank" rel="noopener">Behance <span aria-hidden="true">↗</span></a>
+            <a href="./assets/Nathaly-Mena-CV-ES.pdf" download aria-label="Descargar hoja de vida en español">CV ES <span aria-hidden="true">↓</span></a>
+            <a href="./assets/Nathaly-Mena-CV-EN.pdf" download aria-label="Download résumé in English" lang="en">CV EN <span aria-hidden="true">↓</span></a>
           </span>
         </div>
       </div>
@@ -109,11 +113,11 @@
 
     <div class="about">
       <div class="about__text" data-reveal>
-        <p>Soy diseñadora UX/UI en Cali, Colombia. Diseño productos digitales complejos y soluciones B2B escalables, con foco en investigación con usuarios, arquitectura de información, sistemas de diseño y accesibilidad.</p>
+        <p>Soy diseñadora UX/UI en Cali, Colombia. Diseño productos de alto impacto y soluciones B2B y B2C escalables, enfocados en investigación con usuarios, arquitectura de información, sistemas de diseño y accesibilidad.</p>
         <p>Mi trabajo consiste en optimizar flujos críticos y reducir la fricción operativa: que un proceso transaccional difícil se sienta simple para quien lo usa todos los días.</p>
         <ul class="facts">
           <li><b>+3</b><span>años de experiencia</span></li>
-          <li><b>B2B</b><span>Facturación Electrónica y EDI</span></li>
+          <li><b>B2B y B2C</b><span>productos y soluciones escalables</span></li>
           <li><b>WCAG</b><span>accesibilidad como estándar</span></li>
           <li><b>Cum Laude</b><span>Diseño de Medios Interactivos</span></li>
         </ul>
@@ -156,6 +160,11 @@
         <h3>Investigación de Usuarios para UX · Innovación en Servicios</h3>
         <p>Icesi · Desarrollo Web Básico (Platzi) · Español nativo · Inglés B2</p>
       </article>
+      <button class="edu__item edu__item--cta" id="certOpen" type="button" aria-haspopup="dialog" data-reveal="scale" style="--d:.32s">
+        <span class="edu__date">Formación continua</span>
+        <h3>Certificaciones Crehana</h3>
+        <p>Ver la lista de certificaciones <span aria-hidden="true">→</span></p>
+      </button>
     </div>
   </div>
 </section>
@@ -170,6 +179,15 @@
 
     <ol class="timeline" id="timeline">
       <span class="timeline__fill" id="timelineFill" aria-hidden="true"></span>
+      <li data-reveal>
+        <div class="tl__when">Actual</div>
+        <div class="tl__body">
+          <h3>Diseñadora de Productos Digitales <span>Clientes independientes</span></h3>
+          <ul>
+            <li>Trabajo con clientes apoyándolos, gestionando y creando productos digitales que se alineen con sus necesidades.</li>
+          </ul>
+        </div>
+      </li>
       <li data-reveal>
         <div class="tl__when">Ene 2024 – Actual</div>
         <div class="tl__body">
@@ -229,12 +247,13 @@
     <i class="reg reg--tl"></i><i class="reg reg--tr"></i><i class="reg reg--bl"></i><i class="reg reg--br"></i>
     <svg class="contact__arc" viewBox="0 0 900 320" aria-hidden="true"><path d="M30 20 C 190 400, 710 400, 870 20"/></svg>
     <p class="eyebrow eyebrow--light"><i class="plus"></i>04 — Contacto</p>
-    <h2>¿Diseñamos algo <span class="hl">juntos</span>?</h2>
+    <h2>¿Trabajamos <span class="hl">juntos</span>?</h2>
     <a class="contact__mail" href="mailto:natamena2001@gmail.com">natamena2001@gmail.com</a>
     <div class="contact__cta">
       <a class="btn btn--yellow" href="mailto:natamena2001@gmail.com">Hablemos</a>
-      <a class="btn btn--ghost" href="./assets/CV-Nathaly-Mena.pdf" download>Descargar CV ↓</a>
-      <a class="btn btn--ghost" data-behance href="https://www.behance.net/" target="_blank" rel="noopener">Behance ↗</a>
+      <a class="btn btn--ghost" href="./assets/Nathaly-Mena-CV-ES.pdf" download>CV en español ↓</a>
+      <a class="btn btn--ghost" href="./assets/Nathaly-Mena-CV-EN.pdf" download lang="en">CV in English ↓</a>
+      <a class="btn btn--ghost" data-behance href="https://www.behance.net/nathalymena" target="_blank" rel="noopener">Behance ↗</a>
     </div>
   </div>
   <div class="foot wrap">
@@ -261,6 +280,18 @@
   <div class="modal__stage" id="modalStage">
     <div class="modal__loader" id="modalLoader"><i class="reg"></i><span>Cargando presentación…</span></div>
   </div>
+</dialog>
+
+<!-- ============ MODAL CERTIFICACIONES ============ -->
+<dialog class="modal modal--sm" id="certModal" aria-labelledby="certTitle">
+  <div class="modal__bar">
+    <div>
+      <p class="modal__cat">Formación continua</p>
+      <h3 id="certTitle">Certificaciones Crehana</h3>
+    </div>
+    <div class="modal__tools"><button class="icon icon--close" id="certClose" aria-label="Cerrar certificaciones">✕</button></div>
+  </div>
+  <ol class="certs" id="certList"></ol>
 </dialog>
 
 <script src="script.js"></script>

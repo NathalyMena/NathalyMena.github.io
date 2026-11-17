@@ -66,7 +66,7 @@ body:not(.past-hero) .progress span{background:linear-gradient(90deg,var(--teal)
 .btn--line{border:1.5px solid var(--line);color:var(--ink)}
 .btn--line:hover{border-color:var(--blue);color:var(--blue)}
 .split{display:inline-flex;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;overflow:hidden;font-weight:700;font-size:16px}
-.split a{padding:17px 22px;line-height:1;transition:background .25s,color .25s}
+.split a{padding:17px 18px;line-height:1;transition:background .25s,color .25s}
 .split a+a{border-left:1.5px solid rgba(255,255,255,.45)}
 .split a:hover{background:var(--yellow);color:var(--ink)}
 
@@ -198,33 +198,22 @@ mark{background:linear-gradient(transparent 62%,var(--yellow) 62%) no-repeat 0 0
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
 .pcard{grid-column:span 4;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;
   transition:transform .5s var(--ease),border-color .3s,box-shadow .5s}
-.pcard:nth-child(7n+1),.pcard:nth-child(7n+7){grid-column:span 7}
-.pcard:nth-child(7n+2),.pcard:nth-child(7n+6){grid-column:span 5}
-.grid[data-count="1"] .pcard,.grid[data-count="2"] .pcard{grid-column:span 6}
+.pcard:nth-child(7n+1),.pcard:nth-child(7n+2),.pcard:nth-child(7n+6),.pcard:nth-child(7n+7){grid-column:span 6}
+.grid[data-count="1"] .pcard,.grid[data-count="2"] .pcard,.grid[data-count="4"] .pcard{grid-column:span 6}
 .grid[data-count="3"] .pcard{grid-column:span 4}
 .js .pcard{opacity:0}
 .js .grid.is-in .pcard{animation:cardIn .8s var(--ease) calc(var(--i)*70ms) forwards}
 @keyframes cardIn{from{opacity:0;transform:translateY(26px) scale(.94)}to{opacity:1;transform:none}}
 .pcard:hover,.pcard:focus-within{border-color:var(--blue);box-shadow:0 30px 60px -34px rgba(0,38,230,.55)}
-.pcard__cover{position:relative;aspect-ratio:16/9.4;overflow:hidden;display:block;width:100%;text-align:left;background:var(--c-bg,var(--blue));color:var(--c-fg,#fff)}
-.pcard:nth-child(7n+1) .pcard__cover,.pcard:nth-child(7n+7) .pcard__cover{aspect-ratio:16/8}
+.pcard__cover{position:relative;aspect-ratio:404/316;overflow:hidden;background:#e8eef6}
 .pcard__cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
 .pcard:hover .pcard__cover img{transform:scale(1.05)}
-/* portada generativa (cuando aún no hay imagen) */
-.gen{position:absolute;inset:0}
-.gen__cap{position:absolute;left:50%;bottom:-6%;width:38%;aspect-ratio:1/1.25;translate:-50% 0;border-radius:999px 999px 0 0;background:var(--c-cap,var(--yellow));transition:transform .8s var(--ease)}
-.gen svg{position:absolute;left:50%;bottom:6%;width:50%;translate:-50% 0;overflow:visible}
-.gen path{fill:none;stroke:var(--c-arc,var(--teal));stroke-width:16;stroke-linecap:round;stroke-dasharray:520;stroke-dashoffset:0;transition:stroke-dashoffset .9s var(--ease)}
-.gen__num{position:absolute;left:22px;top:14px;font-weight:800;font-size:clamp(2.6rem,5vw,4.4rem);letter-spacing:-.04em;line-height:1;opacity:.95}
-.gen .reg{inset:auto;width:14px;height:14px;opacity:.8}
-.gen .reg--tr{top:18px;right:18px}.gen .reg--br{bottom:18px;right:18px}.gen .reg--bl{bottom:18px;left:18px}
-.pcard:hover .gen__cap{transform:translateY(-8%) scale(1.04)}
-.pcard:hover .gen path{animation:redraw 1s var(--ease)}
-@keyframes redraw{from{stroke-dashoffset:520}to{stroke-dashoffset:0}}
-.pcard:hover .gen .reg{transform:rotate(90deg)}
+.pcard__cover iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.pcard__hit{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
+.pcard__hit:focus-visible{outline-offset:-4px}
 .pcard__play{position:absolute;right:16px;top:16px;display:flex;align-items:center;gap:8px;background:rgba(11,19,43,.82);color:#fff;font-size:13px;font-weight:700;
   padding:8px 14px;border-radius:999px;opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .4s var(--ease)}
-.pcard:hover .pcard__play,.pcard__cover:focus-visible .pcard__play{opacity:1;transform:none}
+.pcard:hover .pcard__play,.pcard__hit:focus-visible .pcard__play{opacity:1;transform:none}
 .pcard__body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
 .pcard__cat{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
 .pcard h3{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
@@ -238,7 +227,7 @@ mark{background:linear-gradient(transparent 62%,var(--yellow) 62%) no-repeat 0 0
 .link:hover::after{transform:scaleX(1);background:var(--blue)}
 .empty{grid-column:1/-1;padding:48px;text-align:center;color:var(--ink-2);border:1.5px dashed var(--line);border-radius:var(--r)}
 @media (max-width:980px){.pcard,.pcard:nth-child(n){grid-column:span 6!important}}
-@media (max-width:640px){.pcard,.pcard:nth-child(n){grid-column:1/-1!important}.pcard__cover,.pcard:nth-child(n) .pcard__cover{aspect-ratio:16/10}}
+@media (max-width:640px){.pcard,.pcard:nth-child(n){grid-column:1/-1!important}}
 
 /* ---------- Sobre mí ---------- */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
@@ -331,6 +320,45 @@ mark{background:linear-gradient(transparent 62%,var(--yellow) 62%) no-repeat 0 0
   .modal__tools{width:100%;justify-content:flex-end}
   #modalLink{margin-right:auto;order:-1}
 }
+
+/* ---------- Interruptor de animaciones ---------- */
+.motion{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap;transition:background .25s}
+.motion:hover{background:rgba(255,255,255,.16)}
+.past-hero .motion:hover{background:rgba(0,38,230,.08)}
+.motion__track{width:34px;height:20px;border-radius:999px;background:rgba(127,140,170,.55);position:relative;transition:background .25s;flex:none}
+.motion__track span{position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .25s}
+.motion[aria-checked=true] .motion__track{background:var(--teal)}
+.past-hero .motion[aria-checked=true] .motion__track{background:var(--blue)}
+.motion[aria-checked=true] .motion__track span{transform:translateX(14px)}
+@media (max-width:900px) and (min-width:761px){.motion__label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
+@media (max-width:760px){.motion{justify-content:space-between;flex-direction:row-reverse;padding:10px 15px}}
+
+/* ---------- Certificaciones ---------- */
+.edu__item--cta{grid-column:1/-1;min-height:0;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 24px;text-align:left;border-color:var(--blue);cursor:pointer;
+  transition:background .3s,color .3s,opacity .8s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
+.edu__item--cta h3{font-size:1.3rem}
+.edu__item--cta p{margin:0 0 0 auto;font-weight:700;color:var(--blue)}
+.edu__item--cta:hover{background:var(--blue);color:#fff}
+.edu__item--cta:hover .edu__date{color:var(--yellow)}.edu__item--cta:hover p{color:#fff}
+.modal--sm{width:min(560px,100% - 24px);height:auto;max-height:min(80vh,720px)}
+.certs{overflow:auto;padding:10px 26px 26px;counter-reset:c}
+.certs li{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-weight:500;counter-increment:c}
+.certs li:last-child{border-bottom:0}
+.certs li>span::before{content:counter(c,decimal-leading-zero);color:var(--blue);font-weight:800;margin-right:12px;font-size:.85em}
+.certs a:hover{color:var(--blue)}
+.certs small{color:var(--ink-2);font-weight:700;flex:none}
+.certs__empty{color:var(--ink-2);justify-content:center!important;padding:36px 0!important}
+
+/* ---------- Modo estático (interruptor) ---------- */
+.static{scroll-behavior:auto}
+.static *,.static *::before,.static *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+.static.js [data-reveal],.static.js .pcard{opacity:1;transform:none}
+.static .hero__panel,.static .hero__copy,.static .hero__visual,.static .frame,.static .frame__img img,.static .frame .reg,.static .frame__chip,
+.static .btn:hover,.static .pcard:hover .pcard__cover img,.static .chips li:hover,.static .filter:hover,.static .icon--close:hover{transform:none}
+.static .hero__copy{opacity:1}
+.static .badge__pulse,.static .hero__scroll span,.static .modal__loader .reg{animation:none}
+.static body{background:var(--base)}
+.static .hero__scroll{display:none}
 
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion:reduce){
