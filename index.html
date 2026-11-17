@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nathaly Mena — Diseñadora UX/UI</title>
+<meta name="description" content="Portafolio de Nathaly Mena, Diseñadora UX/UI y Product Designer. Productos B2B, Sistemas de Diseño y Accesibilidad (WCAG).">
+<meta name="theme-color" content="#0026E6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<!-- Marcas de registro fijas (eco de la foto) -->
+<div class="regmarks" aria-hidden="true">
+  <i class="reg reg--tl"></i><i class="reg reg--tr"></i><i class="reg reg--bl"></i><i class="reg reg--br"></i>
+</div>
+
+<a class="skip" href="#proyectos">Saltar al contenido</a>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav" aria-label="Principal">
+  <a class="nav__brand" href="#inicio"><span class="nav__dot"></span>Nathaly Mena</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú"><span></span><span></span></button>
+  <div class="nav__links" id="navLinks">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#experiencia">Experiencia</a>
+    <a class="btn btn--yellow btn--sm" href="#contacto">Hablemos</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="inicio">
+  <div class="hero__panel">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="badge" data-reveal><span class="badge__pulse"></span>Diseñadora UX/UI <b>•</b> Product Designer</p>
+        <h1 class="hero__title" data-reveal style="--d:.08s">
+          Transformo productos complejos en experiencias digitales
+          <span class="hl">intuitivas</span> y
+          <span class="arc-word">escalables.<svg viewBox="0 0 300 26" preserveAspectRatio="none" aria-hidden="true"><path d="M4 4 C 90 30, 210 30, 296 4"/></svg></span>
+        </h1>
+        <p class="hero__sub" data-reveal style="--d:.16s">
+          <strong>+3 años</strong> diseñando productos <strong>B2B</strong>, Sistemas de Diseño y experiencias accesibles
+          <strong>(WCAG)</strong>. Actualmente curso la Maestría en Creación de Experiencias de Usuario en la Universidad Icesi.
+        </p>
+        <div class="hero__cta" data-reveal style="--d:.24s">
+          <a class="btn btn--hero" href="#proyectos">Ver proyectos <span class="btn__ico" aria-hidden="true">↓</span></a>
+          <span class="split">
+            <a data-behance href="https://www.behance.net/" target="_blank" rel="noopener">Behance <span aria-hidden="true">↗</span></a>
+            <a href="./assets/CV-Nathaly-Mena.pdf" download>CV <span aria-hidden="true">↓</span></a>
+          </span>
+        </div>
+      </div>
+
+      <div class="hero__visual" data-reveal style="--d:.2s">
+        <div class="frame" id="frame">
+          <i class="reg reg--tl"></i><i class="reg reg--tr"></i><i class="reg reg--bl"></i><i class="reg reg--br"></i>
+          <div class="frame__img">
+            <img src="./assets/nathaly-hero.png" alt="Retrato de Nathaly Mena sonriendo, sobre fondo azul con una cápsula amarilla y un arco turquesa" width="1672" height="941" fetchpriority="high">
+          </div>
+          <span class="frame__tag frame__tag--a">FIG. 01 — UX/UI</span>
+          <span class="frame__tag frame__tag--b">Cali, Colombia</span>
+          <span class="frame__chip">Maestría UX · Icesi</span>
+        </div>
+      </div>
+    </div>
+    <a class="hero__scroll" href="#proyectos" aria-label="Bajar a proyectos"><span></span>Scroll</a>
+  </div>
+</header>
+
+<!-- ============ CINTA DE DISCIPLINAS ============ -->
+<div class="tape" aria-hidden="true">
+  <div class="tape__row" id="tape">
+    <span>UX Research</span><i>+</i><span>Design Systems</span><i>+</i><span>Accesibilidad WCAG</span><i>+</i><span>Service Design</span><i>+</i><span>Prototipado</span><i>+</i><span>Arquitectura de información</span><i>+</i><span>UX Research</span><i>+</i><span>Design Systems</span><i>+</i><span>Accesibilidad WCAG</span><i>+</i>
+  </div>
+</div>
+
+<main>
+<!-- ============ PROYECTOS ============ -->
+<section class="section" id="proyectos">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <p class="eyebrow"><i class="plus"></i>01 — Proyectos</p>
+      <h2>Casos de estudio y <mark>trabajo seleccionado</mark></h2>
+      <p class="lead">Cada tarjeta abre la presentación completa publicada en Behance, sin salir de esta página.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrar proyectos por categoría" data-reveal id="filters"></div>
+
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section class="section" id="sobre-mi">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <p class="eyebrow"><i class="plus"></i>02 — Sobre mí</p>
+      <h2>Traduzco requerimientos técnicos y de negocio en <mark>interfaces intuitivas</mark></h2>
+    </div>
+
+    <div class="about">
+      <div class="about__text" data-reveal>
+        <p>Soy diseñadora UX/UI en Cali, Colombia. Diseño productos digitales complejos y soluciones B2B escalables, con foco en investigación con usuarios, arquitectura de información, sistemas de diseño y accesibilidad.</p>
+        <p>Mi trabajo consiste en optimizar flujos críticos y reducir la fricción operativa: que un proceso transaccional difícil se sienta simple para quien lo usa todos los días.</p>
+        <ul class="facts">
+          <li><b>+3</b><span>años de experiencia</span></li>
+          <li><b>B2B</b><span>Facturación Electrónica y EDI</span></li>
+          <li><b>WCAG</b><span>accesibilidad como estándar</span></li>
+          <li><b>Cum Laude</b><span>Diseño de Medios Interactivos</span></li>
+        </ul>
+      </div>
+
+      <div class="about__cards">
+        <article class="card" data-reveal="scale">
+          <h3>Diseño UX &amp; Estrategia</h3>
+          <ul class="chips"><li>UX Research</li><li>Pruebas de usabilidad</li><li>Arquitectura de información</li><li>Wireframing</li><li>User Flows</li><li>Service Design</li><li>Auditoría heurística</li><li>Accesibilidad (WCAG)</li></ul>
+        </article>
+        <article class="card" data-reveal="scale" style="--d:.08s">
+          <h3>Diseño UI &amp; Sistemas</h3>
+          <ul class="chips"><li>Design Systems</li><li>Componentes y Tokens en Figma</li><li>Prototipado interactivo</li><li>Diseño responsivo</li><li>Handoff técnico (Dev Mode)</li></ul>
+        </article>
+        <article class="card" data-reveal="scale" style="--d:.16s">
+          <h3>Herramientas &amp; Tecnología</h3>
+          <ul class="chips"><li>Figma</li><li>Adobe Illustrator</li><li>HTML5</li><li>CSS3</li><li>Scrum</li><li>Flujos asistidos por IA</li></ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="edu">
+      <article class="edu__item edu__item--blue" data-reveal="scale">
+        <span class="edu__date">2025 – 2026 · En curso</span>
+        <h3>Maestría en Creación de Experiencias de Usuario (UX)</h3>
+        <p>Universidad Icesi, Cali</p>
+      </article>
+      <article class="edu__item" data-reveal="scale" style="--d:.08s">
+        <span class="edu__date">2019 – 2023 · Cum Laude</span>
+        <h3>Pregrado en Diseño de Medios Interactivos</h3>
+        <p>Universidad Icesi, Cali</p>
+      </article>
+      <article class="edu__item edu__item--yellow" data-reveal="scale" style="--d:.16s">
+        <span class="edu__date">Distinciones</span>
+        <h3>Beca de Honor, 1er lugar (2023-1)</h3>
+        <p>Cuadro de Honor en 5 semestres consecutivos y monitora académica.</p>
+      </article>
+      <article class="edu__item" data-reveal="scale" style="--d:.24s">
+        <span class="edu__date">Certificaciones e idiomas</span>
+        <h3>Investigación de Usuarios para UX · Innovación en Servicios</h3>
+        <p>Icesi · Desarrollo Web Básico (Platzi) · Español nativo · Inglés B2</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section class="section" id="experiencia">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <p class="eyebrow"><i class="plus"></i>03 — Experiencia</p>
+      <h2>Del prototipo al producto, <mark>de extremo a extremo</mark></h2>
+    </div>
+
+    <ol class="timeline" id="timeline">
+      <span class="timeline__fill" id="timelineFill" aria-hidden="true"></span>
+      <li data-reveal>
+        <div class="tl__when">Ene 2024 – Actual</div>
+        <div class="tl__body">
+          <h3>Diseñadora UX/UI <span>Carvajal TyS</span></h3>
+          <ul>
+            <li>Lidero el diseño end-to-end de plataformas B2B de Facturación Electrónica y EDI, simplificando procesos transaccionales de alta complejidad.</li>
+            <li>Investigación con usuarios, mapeo de User Journeys y pruebas de usabilidad para detectar cuellos de botella.</li>
+            <li>Componentes escalables en Figma bajo estándares de accesibilidad, agilizando el handoff con desarrollo en marcos ágiles.</li>
+          </ul>
+        </div>
+      </li>
+      <li data-reveal>
+        <div class="tl__when">Jul 2023 – Ene 2024</div>
+        <div class="tl__body">
+          <h3>Practicante en Diseño UX/UI <span>Carvajal TyS</span></h3>
+          <ul>
+            <li>Prototipos interactivos de alta fidelidad y documentación funcional para módulos digitales corporativos.</li>
+            <li>Auditoría y mejora de flujos existentes junto a equipos multidisciplinarios, en herramientas internas y de clientes.</li>
+          </ul>
+        </div>
+      </li>
+      <li data-reveal>
+        <div class="tl__when">2021 – Ene 2023</div>
+        <div class="tl__body">
+          <h3>Diseñadora UI &amp; Contenido Digital <span>Freelance &amp; Start-Upcafé</span></h3>
+          <ul>
+            <li>Interfaces web, prototipos navegables en Figma y sistemas gráficos para marcas y emprendimientos digitales.</li>
+          </ul>
+        </div>
+      </li>
+      <li data-reveal>
+        <div class="tl__when">Ene – Jul 2022</div>
+        <div class="tl__body">
+          <h3>Scrum Master <span>Proyecto Bancoomeva · Académico</span></h3>
+          <ul>
+            <li>Facilitación de ceremonias ágiles, gestión de impedimentos y alineación de diseño y desarrollo para entregas iterativas.</li>
+          </ul>
+        </div>
+      </li>
+      <li data-reveal>
+        <div class="tl__when">Ago – Dic 2020</div>
+        <div class="tl__body">
+          <h3>Diseñadora UI &amp; Accesibilidad <span>Proyecto GAPI · Académico</span></h3>
+          <ul>
+            <li>Reestructuración de arquitectura e interfaz web enfocada en accesibilidad digital para personas con diversidad funcional.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<!-- ============ CONTACTO ============ -->
+<footer class="contact" id="contacto">
+  <div class="contact__panel" data-reveal="scale">
+    <i class="reg reg--tl"></i><i class="reg reg--tr"></i><i class="reg reg--bl"></i><i class="reg reg--br"></i>
+    <svg class="contact__arc" viewBox="0 0 900 320" aria-hidden="true"><path d="M30 20 C 190 400, 710 400, 870 20"/></svg>
+    <p class="eyebrow eyebrow--light"><i class="plus"></i>04 — Contacto</p>
+    <h2>¿Diseñamos algo <span class="hl">juntos</span>?</h2>
+    <a class="contact__mail" href="mailto:natamena2001@gmail.com">natamena2001@gmail.com</a>
+    <div class="contact__cta">
+      <a class="btn btn--yellow" href="mailto:natamena2001@gmail.com">Hablemos</a>
+      <a class="btn btn--ghost" href="./assets/CV-Nathaly-Mena.pdf" download>Descargar CV ↓</a>
+      <a class="btn btn--ghost" data-behance href="https://www.behance.net/" target="_blank" rel="noopener">Behance ↗</a>
+    </div>
+  </div>
+  <div class="foot wrap">
+    <span>© <span id="year"></span> Nathaly Mena · Cali, Colombia</span>
+    <a href="#inicio">Volver arriba ↑</a>
+  </div>
+</footer>
+
+<!-- ============ MODAL BEHANCE ============ -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal__bar">
+    <div>
+      <p class="modal__cat" id="modalCat"></p>
+      <h3 id="modalTitle"></h3>
+    </div>
+    <div class="modal__tools">
+      <span class="modal__count" id="modalCount"></span>
+      <button class="icon" id="modalPrev" aria-label="Proyecto anterior">←</button>
+      <button class="icon" id="modalNext" aria-label="Proyecto siguiente">→</button>
+      <a class="btn btn--sm btn--line" id="modalLink" target="_blank" rel="noopener">Abrir en Behance ↗</a>
+      <button class="icon icon--close" id="modalClose" aria-label="Cerrar presentación">✕</button>
+    </div>
+  </div>
+  <div class="modal__stage" id="modalStage">
+    <div class="modal__loader" id="modalLoader"><i class="reg"></i><span>Cargando presentación…</span></div>
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
